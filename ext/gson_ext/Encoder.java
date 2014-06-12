@@ -39,6 +39,7 @@ import org.jruby.anno.JRubyClass;
 import org.jruby.anno.JRubyMethod;
 import org.jruby.exceptions.RaiseException;
 import org.jruby.ext.stringio.RubyStringIO;
+import org.jruby.ext.stringio.StringIO;
 import org.jruby.java.addons.IOJavaAddons;
 import org.jruby.runtime.ThreadContext;
 import org.jruby.runtime.builtin.IRubyObject;
@@ -133,7 +134,7 @@ public class Encoder extends RubyObject {
             out = new StringWriter();
         } else {
             IRubyObject io = args[1];
-            if ((io instanceof RubyIO) || (io instanceof RubyStringIO)) {
+            if ((io instanceof RubyIO) || (io instanceof RubyStringIO) || (io instanceof StringIO)) {
                 IRubyObject stream = IOJavaAddons.AnyIO.any_to_outputstream(context, io);
                 out = new OutputStreamWriter((OutputStream)stream.toJava(OutputStream.class));
             } else {

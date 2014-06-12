@@ -41,6 +41,7 @@ import org.jruby.anno.JRubyClass;
 import org.jruby.anno.JRubyMethod;
 import org.jruby.exceptions.RaiseException;
 import org.jruby.ext.stringio.RubyStringIO;
+import org.jruby.ext.stringio.StringIO;
 import org.jruby.java.addons.IOJavaAddons;
 import org.jruby.runtime.ThreadContext;
 import org.jruby.runtime.Block;
@@ -196,11 +197,11 @@ public class Decoder extends RubyObject {
     private Reader prepareSourceReader(Ruby ruby, ThreadContext context, IRubyObject source) {
         if (source instanceof RubyString) {
             return new StringReader(source.toString());
-        } else if ((source instanceof RubyIO) || (source instanceof RubyStringIO)) {
+        } else if ((source instanceof RubyIO) || (source instanceof RubyStringIO) || (source instanceof StringIO)) {
             IRubyObject stream = IOJavaAddons.AnyIO.any_to_inputstream(context, source);
             return new InputStreamReader((InputStream)stream.toJava(InputStream.class));
         } else {
-            throw ruby.newArgumentError("Unsupported source. This method accepts String or IO");
+            throw ruby.newArgumentError("Unsupported source. This method accepts String or IO " + source.getClass());
         }
     }
 
