@@ -22,7 +22,10 @@ def gemspec
   @clean_gemspec ||= eval(File.read(File.expand_path('../../gson.gemspec', __FILE__)))
 end
 
-Rake::JavaExtensionTask.new('gson_ext', gemspec)
+Rake::JavaExtensionTask.new('gson_ext', gemspec) do |ext|
+  ext.source_version = '1.8'
+  ext.target_version = '1.8'
+end
 
 require 'rubygems/package_task'
 Gem::PackageTask.new(gemspec) do |pkg|
