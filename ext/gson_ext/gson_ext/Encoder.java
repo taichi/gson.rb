@@ -16,12 +16,12 @@
 
 package gson_ext;
 
-import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.io.Writer;
+
 import org.jruby.Ruby;
 import org.jruby.RubyArray;
 import org.jruby.RubyBoolean;
@@ -31,7 +31,6 @@ import org.jruby.RubyFloat;
 import org.jruby.RubyHash;
 import org.jruby.RubyIO;
 import org.jruby.RubyInteger;
-import org.jruby.RubyNumeric;
 import org.jruby.RubyObject;
 import org.jruby.RubyString;
 import org.jruby.RubySymbol;
@@ -43,7 +42,8 @@ import org.jruby.ext.stringio.StringIO;
 import org.jruby.java.addons.IOJavaAddons;
 import org.jruby.runtime.ThreadContext;
 import org.jruby.runtime.builtin.IRubyObject;
-import org.jruby.util.IOOutputStream;
+
+import com.google.gson.stream.JsonWriter;
 
 @JRubyClass(name = "Gson::Encoder")
 public class Encoder extends RubyObject {
@@ -161,8 +161,6 @@ public class Encoder extends RubyObject {
 
     private void encodeValue(JsonWriter writer, ThreadContext context, IRubyObject val)
         throws IOException {
-        Ruby ruby = context.getRuntime();
-
         if (val.isNil()) {
             writer.nullValue();
         } else if (val instanceof RubyHash) {
