@@ -2,7 +2,7 @@
 
 Ruby wrapper for [google-gson][1] library
 
-[![Build Status](https://travis-ci.org/avsej/gson.rb.png)][2]
+[![Build Status](https://travis-ci.org/taichi/gson.rb.png)][2]
 
 ## Installation
 
