@@ -20,6 +20,8 @@ Rake::TestTask.new do |test|
   test.libs << "test" << "."
   test.pattern = 'test/test_*.rb'
   test.options = '--verbose'
+  test.ruby_opts << '-J-Dfile.encoding=UTF-8'
+  test.ruby_opts << '-E UTF-8'
 end
 
 Rake::Task['test'].prerequisites.unshift(:compile)
