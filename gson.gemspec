@@ -35,5 +35,4 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_development_dependency 'rake-compiler', '>= 0.7.5'
-  gem.add_development_dependency 'minitest', '>= 4.7.5'
 end
