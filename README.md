@@ -112,4 +112,4 @@ Additional decoder options:
 5. Create new Pull Request
 
 [1]: https://code.google.com/p/google-gson/
-[2]: https://travis-ci.org/avsej/gson.rb
+[2]: https://travis-ci.org/taichi/gson.rb
