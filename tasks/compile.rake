@@ -29,6 +29,4 @@ end
 
 require 'rubygems/package_task'
 Gem::PackageTask.new(gemspec) do |pkg|
-  pkg.need_tar = true
 end
-
