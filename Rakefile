@@ -19,4 +19,6 @@ require "bundler/gem_tasks"
 
 Dir['tasks/*.rake'].sort.each { |f| load f }
 
-task :default => :compile
+task :default => [:clean, :test, :package]
+
+CLEAN.include "pkg", "tmp"
